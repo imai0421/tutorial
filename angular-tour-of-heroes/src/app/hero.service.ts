@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -23,11 +22,6 @@ export class HeroService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  // getHeroes(): Observable<Hero[]> {
-  //   const heroes = of(HEROES);
-  //   this.messageService.add('HeroService: fetched heroes');
-  //   return heroes;
-  // }
   /** サーバーからヒーローを取得する */
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
@@ -61,24 +55,24 @@ export class HeroService {
   /** POST: サーバーに新しいヒーローを登録する */
   addHero(hero: Hero): Observable<Hero> {
     return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
+      tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.Id}`)),
       catchError(this.handleError<Hero>('addHero'))
       );
   }
 
   /** PUT: サーバー上でヒーローを更新 */
   updateHero(hero: Hero): Observable<any> {
-    const id = typeof hero === 'number' ? hero : hero.id;
+    const id = typeof hero === 'number' ? hero : hero.Id;
     const url = `${this.heroesUrl}/${id}`;
     return this.http.put(url, hero, this.httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${hero.id}`)),
+      tap(_ => this.log(`updated hero id=${hero.Id}`)),
       catchError(this.handleError<any>('updateHero'))
       );
   }
 
   /** DELETE: サーバーからヒーローを削除 */
   deleteHero(hero: Hero | number): Observable<Hero> {
-    const id = typeof hero === 'number' ? hero : hero.id;
+    const id = typeof hero === 'number' ? hero : hero.Id;
     const url = `${this.heroesUrl}/${id}`;
     return this.http.delete<Hero>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),
