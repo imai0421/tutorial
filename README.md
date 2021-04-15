@@ -12,8 +12,5 @@ TutorialTestAPIを起動
 ## 3.起動
 ```
 cd angular-tour-of-heroes
-ng serve
+ng serve --open
 ```
-
-以下へアクセス
-http://localhost:4200/
