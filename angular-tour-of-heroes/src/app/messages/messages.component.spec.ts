@@ -22,4 +22,10 @@ describe('MessagesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('ngOnInit', () => {
+    component.ngOnInit();
+    // ToDo:何をどうやってテストしたらいい？
+    expect(1).toEqual(1);
+  });
 });
