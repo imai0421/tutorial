@@ -2,6 +2,10 @@
   "/api": {
     "target": "https://localhost:44320",
     "secure": false
+  },
+  "/signalr": {
+    "target": "https://localhost:44320",
+    "secure": false
   }
 }
 

@@ -1,0 +1,12 @@
+<h2>Notifications</h2>
+<p id="connection-status">unconnect</p>
+<button class="clear"
+        (click)="notificationService.clear()">Clear Notifications</button>
+<div>
+    <label for="chat-name">Chat Name</label>
+    <input id="chat-name" />
+    <label for="chat-box">Chat Message</label>
+    <input id="chat-box" />
+    <button class="clear" (click)="notificationService.send()">send</button>
+</div>
+<ul id="notifications" class="notifications"></ul>
